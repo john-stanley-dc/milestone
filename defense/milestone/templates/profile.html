@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {% if user.is_active %}
+        {% if user in list_teachers %}
+            <div class="jumbotron">
+                  <div class="row">
+                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                          <img src="https://icons-for-free.com/iconfiles/png/512/friend+human+man+member+person+profile+user+users+icon-1320168707291252637.png" alt="stack photo" class="img" style="width:200px; height: 200px" >
+                      </div>
+                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                          <div class="container" style="border-bottom:1px solid black">
+                            <h2>My Profile</h2>
+                          </div>
+
+                          <ul class="container details">
+                            <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;">Name: </span>{% load account %}{% user_display user %}</p></li>
+                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;">Email: </span>{{ user.email }}</p></li>
+                          </ul>
+                      </div>
+                      <form class="" action="" method="post">
+                            {% csrf_token %}
+                            <textarea name = "news_name" rows="8" cols="8" placeholder="Enter name of the news"></textarea>
+                            <textarea name="news_text" rows="8" cols="80" placeholder="Leave your news here"></textarea>
+                            <br><input type="submit" name="" value="Submit">
+                      </form>
+                  </div>
+            </div>
+        {% else %}
+            <div class="jumbotron">
+                  <div class="row">
+                      <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                          <img src="https://icons-for-free.com/iconfiles/png/512/friend+human+man+member+person+profile+user+users+icon-1320168707291252637.png" alt="stack photo" class="img" style="width:200px; height: 200px" >
+                      </div>
+                      <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                          <div class="container" style="border-bottom:1px solid black">
+                            <h2>My Profile</h2>
+                          </div>
+
+                          <ul class="container details">
+                            <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;">Name: </span>{% load account %}{% user_display user %}</p></li>
+                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;">Email: </span>{{ user.email }}</p></li>
+                          </ul>
+                      </div>
+                  </div>
+            </div>
+        {% endif %}
+    {% else %}
+    <p>Please Sign In!</p>
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
